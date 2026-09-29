@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0a0a0a">
+
+  <title>STUNT LAB | Bikes & Parts</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- BARRA SUPERIOR -->
+<div class="topbar">
+  ENVÍOS A TODO EL PAÍS • HASTA 6 CUOTAS • COMPRA SEGURA
+</div>
+
+<!-- NAV -->
+<header>
+  <nav class="navbar">
+
+    <a href="#inicio" class="logo">
+      STUNT<span>LAB</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="#inicio">Inicio</a>
+      <a href="#productos">Productos</a>
+      <a href="#destacados">Destacados</a>
+      <a href="#nosotros">Nosotros</a>
+    </div>
+
+    <div class="nav-actions">
+      <button class="search-mobile" onclick="focusBusqueda()">⌕</button>
+
+      <button class="cart-btn" onclick="abrirCarrito()">
+        🛒
+        <span id="cantidadCarrito">0</span>
+      </button>
+    </div>
+
+  </nav>
+</header>
+
+
+<main>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+
+  <div class="hero-bg"></div>
+
+  <div class="hero-content">
+
+    <div class="tag">
+      STREET • BIKES • PARTS
+    </div>
+
+    <h1>
+      ARMÁ TU<br>
+      <span>SETUP.</span>
+    </h1>
+
+    <p>
+      Bicicletas y componentes seleccionados para construir
+      una bici a tu estilo.
+    </p>
+
+    <div class="hero-buttons">
+
+      <a href="#productos" class="primary-btn">
+        VER PRODUCTOS →
+      </a>
+
+      <a href="#destacados" class="secondary-btn">
+        DESTACADOS
+      </a>
+
+    </div>
+
+  </div>
+
+  <div class="hero-bike">
+    <div class="bike-glow"></div>
+    <div class="bike-icon">🚲</div>
+  </div>
+
+</section>
+
+
+<!-- FEATURES -->
+<section class="features">
+
+  <div class="feature">
+    <div>🚚</div>
+    <section>
+      <strong>ENVÍOS</strong>
+      <span>A todo el país</span>
+    </section>
+  </div>
+
+  <div class="feature">
+    <div>💳</div>
+    <section>
+      <strong>CUOTAS</strong>
+      <span>Opciones de financiación</span>
+    </section>
+  </div>
+
+  <div class="feature">
+    <div>🔒</div>
+    <section>
+      <strong>COMPRA SEGURA</strong>
+      <span>Protección en tu compra</span>
+    </section>
+  </div>
+
+  <div class="feature">
+    <div>⚙️</div>
+    <section>
+      <strong>COMPONENTES</strong>
+      <span>Armá tu configuración</span>
+    </section>
+  </div>
+
+</section>
+
+
+<!-- CATEGORÍAS -->
+<section class="categories">
+
+  <div class="section-title">
+    <span>EXPLORÁ</span>
+    <h2>CATEGORÍAS</h2>
+  </div>
+
+  <div class="category-grid">
+
+    <button onclick="seleccionarCategoria('bicicletas')">
+      <div>🚲</div>
+      <strong>BICICLETAS</strong>
+      <span>Ver productos →</span>
+    </button>
+
+    <button onclick="seleccionarCategoria('frenos')">
+      <div>⭕</div>
+      <strong>FRENOS</strong>
+      <span>Ver productos →</span>
+    </button>
+
+    <button onclick="seleccionarCategoria('ruedas')">
+      <div>⚙️</div>
+      <strong>RUEDAS</strong>
+      <span>Ver productos →</span>
+    </button>
+
+    <button onclick="seleccionarCategoria('transmision')">
+      <div>⛓️</div>
+      <strong>TRANSMISIÓN</strong>
+      <span>Ver productos →</span>
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- PRODUCTOS -->
+<section class="products-section" id="productos">
+
+  <div class="section-title">
+    <span>SHOP</span>
+    <h2>PRODUCTOS</h2>
+  </div>
+
+  <!-- BUSCADOR -->
+  <div class="search-container">
+    <span>⌕</span>
+
+    <input
+      id="busqueda"
+      type="search"
+      placeholder="Buscar bicicleta, freno, cubierta..."
+      oninput="buscarProductos()"
+    >
+  </div>
+
+
+  <!-- FILTROS -->
+  <div class="filters">
+
+    <button class="filter active"
+      onclick="filtrar('todos', this)">
+      TODOS
+    </button>
+
+    <button class="filter"
+      onclick="filtrar('bicicletas', this)">
+      BICICLETAS
+    </button>
+
+    <button class="filter"
+      onclick="filtrar('frenos', this)">
+      FRENOS
+    </button>
+
+    <button class="filter"
+      onclick="filtrar('ruedas', this)">
+      RUEDAS
+    </button>
+
+    <button class="filter"
+      onclick="filtrar('transmision', this)">
+      TRANSMISIÓN
+    </button>
+
+    <button class="filter"
+      onclick="filtrar('cockpit', this)">
+      COCKPIT
+    </button>
+
+  </div>
+
+
+  <!-- GRID -->
+  <div class="products-grid" id="productsGrid"></div>
+
+</section>
+
+
+<!-- DESTACADO -->
+<section class="featured-section" id="destacados">
+
+  <div class="featured-text">
+
+    <span class="featured-label">
+      STUNT LAB SELECT
+    </span>
+
+    <h2>
+      CONSTRUÍ<br>
+      TU PROPIA<br>
+      <span>BIKE.</span>
+    </h2>
+
+    <p>
+      Elegí cuadro, ruedas, transmisión, frenos y cockpit
+      para armar una configuración personalizada.
+    </p>
+
+    <a href="#productos">
+      EXPLORAR COMPONENTES →
+    </a>
+
+  </div>
+
+  <div class="featured-visual">
+    🚲
+  </div>
+
+</section>
+
+
+<!-- NOSOTROS -->
+<section class="about" id="nosotros">
+
+  <div class="about-number">
+    26"
+  </div>
+
+  <div class="about-content">
+
+    <span>STUNT LAB</span>
+
+    <h2>
+      BIKES.<br>
+      PARTS.<br>
+      STREET.
+    </h2>
+
+    <p>
+      STUNT LAB es un concepto de tienda dedicado a bicicletas
+      y componentes. Encontrá piezas para personalizar tu bicicleta
+      y crear una configuración propia.
+    </p>
+
+    <p>
+      Este sitio es una demostración de e-commerce. Los precios,
+      stock y datos comerciales son ilustrativos.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+
+  <div>
+    <span>STUNT LAB COMMUNITY</span>
+    <h2>ENTERATE DE LO NUEVO.</h2>
+    <p>Nuevos productos, restocks y lanzamientos.</p>
+  </div>
+
+  <form onsubmit="suscribirse(event)">
+    <input
+      type="email"
+      id="email"
+      placeholder="tu@email.com"
+      required
+    >
+
+    <button>
+      SUSCRIBIRME
+    </button>
+  </form>
+
+</section>
+
+</main>
+
+
+<!-- CARRITO -->
+
+<div
+  class="overlay"
+  id="overlay"
+  onclick="cerrarCarrito()">
+</div>
+
+<aside class="cart" id="carrito">
+
+  <div class="cart-header">
+
+    <div>
+      <span>TU COMPRA</span>
+      <h2>CARRITO</h2>
+    </div>
+
+    <button onclick="cerrarCarrito()">
+      ✕
+    </button>
+
+  </div>
+
+  <div id="carritoProductos"></div>
+
+  <div class="cart-footer">
+
+    <div class="cart-total">
+      <span>TOTAL</span>
+      <strong id="total">$0</strong>
+    </div>
+
+    <button
+      class="checkout"
+      onclick="finalizarCompra()">
+      FINALIZAR PEDIDO
+    </button>
+
+    <p>
+      Sitio demostrativo. Configurá los datos reales
+      antes de utilizarlo comercialmente.
+    </p>
+
+  </div>
+
+</aside>
+
+
+<footer>
+
+  <div class="footer-brand">
+    <div class="logo">
+      STUNT<span>LAB</span>
+    </div>
+
+    <p>Bikes • Parts • Street</p>
+  </div>
+
+  <div>
+    <strong>TIENDA</strong>
+    <a href="#productos">Productos</a>
+    <a href="#destacados">Destacados</a>
+  </div>
+
+  <div>
+    <strong>AYUDA</strong>
+    <a href="#">Envíos</a>
+    <a href="#">Cambios</a>
+    <a href="#">Contacto</a>
+  </div>
+
+  <div>
+    <strong>LEGAL</strong>
+    <p>Precios y stock demostrativos.</p>
+    <p>© 2026 STUNT LAB</p>
+  </div>
+
+</footer>
+
+
+<div id="toast"></div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
